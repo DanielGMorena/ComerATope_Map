@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.js'></script>
+        <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.css' rel='stylesheet' />
+        <link rel="stylesheet" href="style.css">
+    </head>
+<body>
+    <div class='sidebar'>
+        <div class='heading'>
+            <h1>Our locations</h1>
+        </div>
+        <div id='listings' class='listings'></div>
+    </div>
+    <div id="map" class="map"></div>
+
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoiY29tZXJhdG9wZSIsImEiOiJjbDk1andtNXcwMmY5M29tOGZld3I1dDZkIn0.NWEJCBAqqcakEgtRyFl79g';
+      
+        const map = new mapboxgl.Map({
+          container: 'map',
+          style: 'mapbox://styles/comeratope/cl95k7yk3001a17lahdb6qfvx',
+          zoom: 13
+        });
+
+        map.on('load'), () => {
+            map.addSource('locations',
+            {
+                type: 'point',
+                url: 'mapbox://comeratope.cl95m5u4f2h2k27nzyfp1ni73-6651u'
+            });
+            map.addLayer({
+                'id': 'locations',
+                'type': 'point',
+                'source': 'locations'
+            });
+        }
+      </script>
+</body>
+</html>
